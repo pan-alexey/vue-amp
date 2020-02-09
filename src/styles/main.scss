@@ -1,0 +1,39 @@
+@font-face {
+  font-display: swap;
+  font-family: GTEestiProDisplay;
+  font-weight: 400;
+  src: url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-display-regular.woff2') format('woff2'), url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-display-regular.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: GTEestiProDisplay;
+  font-weight: 700;
+  src: url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-display-bold.woff2') format('woff2'), url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-display-bold.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: GTEestiProText;
+  font-weight: 300;
+  src: url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-book.woff2') format('woff2'), url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-book.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: GTEestiProText;
+  font-weight: 400;
+  src: url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-book.woff2') format('woff2'), url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-book.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: GTEestiProText;
+  font-weight: 700;
+  src: url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-bold.woff2') format('woff2'), url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-bold.woff') format('woff');
+}
+
+body {
+  font-family: GTEestiProText, Arial, sans-serif;
+  text-size-adjust: none;
+}

@@ -1,0 +1,66 @@
+{
+  "name": "vue-amp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm ci && node server/server.dev.js",
+    "dev:serve": "node server/server.dev.js",
+    "build": "node server/build.js --NODE_ENV=production",
+    "prod": "node server/server.prod.js --NODE_ENV=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pan-alexey/vue-amp.git"
+  },
+  "author": "Pan Alexey <pan-alexey@ozon.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pan-alexey/vue-amp/issues"
+  },
+  "homepage": "https://github.com/pan-alexey/vue-amp#readme",
+  "dependencies": {
+    "chokidar": "^3.3.1",
+    "core-js": "^3.4.4",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "lodash": "^4.17.15",
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "@vue/cli-plugin-babel": "^4.2.2",
+    "@vue/cli-plugin-eslint": "^4.2.2",
+    "@vue/cli-plugin-typescript": "^4.2.2",
+    "@vue/cli-service": "^4.2.2",
+    "@vue/eslint-config-standard": "^5.1.1",
+    "@vue/eslint-config-typescript": "^5.0.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "chalk": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "simple-progress-webpack-plugin": "^1.1.2",
+    "socket.io": "^2.3.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-webpack-plugin": "^1.2.2",
+    "typescript": "^3.7.5",
+    "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.5"
+  }
+}
