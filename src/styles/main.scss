@@ -1,3 +1,5 @@
+@import 'mixins';
+
 @font-face {
   font-display: swap;
   font-family: GTEestiProDisplay;
@@ -33,7 +35,96 @@
   src: url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-bold.woff2') format('woff2'), url('//cdn1.ozone.ru/graphics/fonts/190904/subset-gt-eesti-pro-text-bold.woff') format('woff');
 }
 
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
 body {
+  position: relative;
+  box-sizing: border-box;
   font-family: GTEestiProText, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   text-size-adjust: none;
+  color: #001a34;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+a {
+  color: #005bff;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.block {
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.inline-block {
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 0 auto;
+}
+
+.sticky-bottom {
+  position: fixed;
+  z-index: 510;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+@for $i from 1 through 4 {
+  .separator-#{$i*5} {
+    display: block;
+    width: 100%;
+    height: $i*5 + px;
+  }
 }

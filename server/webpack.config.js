@@ -7,7 +7,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 module.exports = {
     mode: 'production',
     target: 'node',
-    entry: path.join(paths.src, 'server.js'),
+    entry: path.join(paths.src, 'app.js'),
     resolve: { 
       alias: { 
         '@': paths.src, 
@@ -38,6 +38,17 @@ module.exports = {
               'css-loader',
               'sass-loader'
             ],
+          },
+          {
+            test: /\.svg$/,
+            use: ['html-loader', {
+              loader: 'svgo-loader',
+              options: {
+                plugins: [
+                  {convertColors: {currentColor: true}}
+                ]
+              }
+            }]
           },
           {
             enforce: 'pre',

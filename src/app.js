@@ -1,14 +1,38 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './styles/main.scss'
+import { createRouter } from './router'
 
-export const createApp = (context) => {
+Vue.component(
+  'svg-icon', () => import('@/global/SvgIcon.vue')
+)
+
+const createApp = (data) => {
+  const router = createRouter()
+
+  Vue.prototype.$server = data
+
   const app = new Vue({
-    data: {
-      ...context
-    },
+    router,
     render: h => h(App)
   })
 
-  return { app }
+  return { app, router }
+}
+
+export default context => {
+  return new Promise((resolve, reject) => {
+    const { app, router } = createApp(context)
+
+    router.push(context.url)
+
+    router.onReady(() => {
+      const matchedComponents = router.getMatchedComponents()
+
+      if (!matchedComponents.length) {
+        return reject(new Error({ code: 404 }))
+      }
+
+      resolve(app)
+    }, reject)
+  })
 }

@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
     'stylelint-config-standard',
-    'stylelint-config-idiomatic-order'
+    //'stylelint-config-idiomatic-order'
   ],
   rules: {
     'indentation': 2,
@@ -25,7 +25,9 @@ module.exports = {
     'declaration-block-trailing-semicolon': 'always',
     'declaration-colon-space-before': 'never',
     // 'declaration-colon-space-after': 'always',
-    'value-no-vendor-prefix': true,
+    'value-no-vendor-prefix': [true, {
+      ignoreValues : ['sticky']
+    }],
     'number-leading-zero': 'never',
     'function-url-quotes': 'always',
     'font-family-name-quotes': 'always-where-recommended',
@@ -54,5 +56,5 @@ module.exports = {
     'at-rule-no-unknown': null,
     'no-descending-specificity': null
   },
-  "ignoreFiles": ["./server/**", "./src/index.html", './dist/**']
+  "ignoreFiles": ["./server/**", "./src/index.html", './dist/**', './src/styles/mixins.scss']
 }
