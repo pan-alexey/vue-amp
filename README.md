@@ -1,4 +1,4 @@
-# Репозиторий для создание amp страниц
+# Репозиторий для amp страниц
 
 Работает Node.js и Vue с приминением серверного рендринга.
 
@@ -18,8 +18,7 @@
 - [Node.js](https://nodejs.org/en/docs/)
 - [WebPack](https://webpack.js.org/)
 - [Express.js](https://vuejs.org/v2/guide/)
-- [Express.js](http://expressjs.com/)
-- [Socket.io](https://socket.io/docs/)
+- [Socket.io](https://vuejs.org/v2/guide/)
 
 Страницы с поддержкой amp доступны 
 http://localhost:8090/
@@ -28,3 +27,7 @@ http://localhost:8090/
 http://localhost:8091/
 
 LiveReload - работает через iframe
+
+Для использования mustache синтаксиса иcпользуйте дерекиву v-pre
+
+Для использования тега < template > иcпользуйте < Template >

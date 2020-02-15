@@ -13,7 +13,7 @@ module.exports = async function(callback) {
   if( callback ){
     chokidar.watch(inputPath ,{usePolling:true}).on('all', async () => {
       await fs.copyFile(inputPath, outputPath);
-      await callback()
+      await callback();
     });
   }
 };

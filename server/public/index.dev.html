@@ -32,7 +32,14 @@ border: 0;
 }
    </style>
    <body>
-      <iframe id="iframe" frameborder="0" src='' id="previewIframe" title="AMP Playground Output" allowpaymentrequest="" sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation" allowfullscreen="true"
+      <iframe
+      id="iframe"
+      frameborder="0"
+      src=''
+      id="previewIframe"
+      title="AMP"
+      allowpaymentrequest="true"
+      sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-presentation allow-top-navigation" allowfullscreen="true"
       >Ваш браузер не поддерживает плавающие фреймы!</iframe>
    </body>
    <script src="/socket.io/socket.io.js"></script>
@@ -45,6 +52,9 @@ border: 0;
    var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
    var socket = io.connect(url);
    socket.on('reload', function (data) {
+      document.location.reload(true);
+   });
+   socket.on('reconnect', function (data) {
       document.location.reload(true);
    });
    </script>

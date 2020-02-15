@@ -1,11 +1,10 @@
 const _ = require('lodash');
 const fs = require('fs-extra');
-const chokidar = require('chokidar');
 const { createBundleRenderer } = require('vue-server-renderer');
 const path = require('path');
 
 const paths = require('../helpers/paths');
-const asyncRender = require('../render');
+const pageRender = require('../render');
 const express = require('express')();
 const server = require('http').Server(express);
 
@@ -19,33 +18,43 @@ express.all('*', function(req, res, next) {
   next();
 });
 
-express.get('*', async function (request, response) {
+
+// mocks for cms-api (https://www.ozon.ru/api/cms-api.bx/menu/category/v1)
+express.get('/mock/catalog', async function (req, res) {
+  res.header("Content-Type",'application/json');
+  res.sendFile(path.join( paths.server, 'mocks/category.json'));
+})
+
+express.get('*', async function (req, res) {
   if( !(render || template) ) {
-    response.status(500);
-    response.send('render or template not load');
+    res.status(500);
+    res.send('render or template not load');
     return;
   }
 
-  const context = {
-    ...request
-  }
-  const { html, style } = await asyncRender(renderer, context);
-  const body = _.template(template)({
-    html,
-    style,
-    request,
-  })
 
-  response.send(body)
+  const context = {
+    ...req,
+    url: req.url
+  }
+  renderer.renderToString(context, (err, html) => {
+    if (err) {
+      res.status(500).end('Internal Server Error');
+      console.log(err)
+    }
+    const page = pageRender(template, html, context);
+    res.end(page);
+  });
 });
 
-const bundlePath = path.join(paths.dist, 'server-bundle.json')
-const templatePath = path.join(paths.dist, 'index.html')
+const bundlePath = path.join(paths.dist, 'server-bundle.json');
+const templatePath = path.join(paths.dist, 'index.html');
 
 const loadRender = async function() {
   template = await fs.readFile(templatePath);
   serverBundle = await fs.readJson(bundlePath);
   renderer = createBundleRenderer(serverBundle, {
+    runInNewContext: false,
     inject: false,
   });
 }
@@ -59,7 +68,10 @@ module.exports = async function(port) {
   return new Promise((resolve, reject) => {
     server.listen(port ,() => {
       resolve({port, reload});
-    })
-    .on('error', (err)=> {reject(err);})
+    });
+
+    server.on('error', (err) => {
+      reject(err);
+    });
   });
 }

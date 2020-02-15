@@ -1,15 +1,19 @@
-module.exports = async function(renderer, context) {
-  return new Promise((resolve, reject) => {
-    renderer.renderToString(context, (err, html) => {
-      if (err) { reject(err); }
-      style = ''
-      context.renderStyles().replace(/(<style\b[^<>]*>)([^<]*)(<\/style>)/gi, (_match, p1, p2) => {
-        style += p2
-        return ''
-      })
+const _ = require('lodash');
+const styleRender = require('./styles');
+const metaAmpRender = require('./meta');
 
-      const meta = [];
-      resolve({html,style, meta});
-    });
+module.exports = function(template, html, context) {
+
+  // All tagname to low case
+  html = html.replace(/<([^\s>]+)(\s|>)+/gi, function(tagname) { return tagname.toLowerCase() });
+
+  const style = styleRender(context.renderStyles());
+  const meta = metaAmpRender(html);
+
+  // TODO DELETE ALL data-v- attr
+  return _.template(template)({
+    html,
+    style,
+    meta
   });
-};
+}
