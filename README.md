@@ -18,7 +18,7 @@
 - [Node.js](https://nodejs.org/en/docs/)
 - [WebPack](https://webpack.js.org/)
 - [Express.js](https://vuejs.org/v2/guide/)
-- [Socket.io](https://vuejs.org/v2/guide/)
+- [Socket.io](https://socket.io/docs/)
 
 Страницы с поддержкой amp доступны 
 http://localhost:8090/
