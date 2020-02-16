@@ -35,7 +35,7 @@ border: 0;
       <iframe
       id="iframe"
       frameborder="0"
-      src=''
+      src="javascript:''"
       id="previewIframe"
       title="AMP"
       allowpaymentrequest="true"
@@ -47,6 +47,7 @@ border: 0;
    var getRemoteLocation = function(port){
       return location.protocol+'//'+location.hostname +':' + port + window.location.pathname + + window.location.search + "#development=1"
    }
+
    document.getElementById('iframe').src = getRemoteLocation('<%= port %>');
 
    var url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');

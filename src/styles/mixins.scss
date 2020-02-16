@@ -1,0 +1,7 @@
+@for $i from 1 through 4 {
+  .separator-#{$i*5} {
+    display: block;
+    width: 100%;
+    height: $i*5 + px;
+  }
+}
