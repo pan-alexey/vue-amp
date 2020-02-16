@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createRouter } from './router'
 
 Vue.component(
-  'svg-icon', () => import('@/global/SvgIcon.vue')
+  'svg-icon', () => import('@/global/svg-icon.vue')
 )
 
 interface ContextInterface {
