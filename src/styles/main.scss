@@ -1,5 +1,3 @@
-@import 'mixins';
-
 @font-face {
   font-display: swap;
   font-family: GTEestiProDisplay;
@@ -121,10 +119,4 @@ a {
   overflow-x: hidden;
 }
 
-@for $i from 1 through 4 {
-  .separator-#{$i*5} {
-    display: block;
-    width: 100%;
-    height: $i*5 + px;
-  }
-}
+@import 'mixins';

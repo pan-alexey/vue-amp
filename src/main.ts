@@ -23,8 +23,6 @@ export default (context: any) => {
   return new Promise((resolve, reject) => {
     const { app, router } = createApp(context)
 
-    console.log(context)
-
     router.push(context.url)
 
     router.onReady(() => {

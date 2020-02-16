@@ -5,36 +5,41 @@ const path = require('path');
 
 const paths = require('../helpers/paths');
 const pageRender = require('../render');
-const express = require('express')();
-const server = require('http').Server(express);
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const bodyParser = require('body-parser');
 
 let render = null;
 let template = null;
 
-express.all('*', function(req, res, next) {
+app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+app.use(express.static('public'));
 
 // mocks for cms-api (https://www.ozon.ru/api/cms-api.bx/menu/category/v1)
-express.get('/mock/catalog', async function (req, res) {
+app.get('/mock/catalog', async function (req, res) {
   res.header("Content-Type",'application/json');
   res.sendFile(path.join( paths.server, 'mocks/category.json'));
 })
 
-express.get('*', async function (req, res) {
+app.get('*', async function (req, res) {
   if( !(render || template) ) {
     res.status(500);
     res.send('render or template not load');
     return;
   }
 
-
   const context = {
-    ...req,
+    body: req.body,
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
