@@ -6,10 +6,15 @@ Vue.component(
   'svg-icon', () => import('@/global/SvgIcon.vue')
 )
 
-const createApp = (data: any) => {
+interface ContextInterface {
+  url: string;
+  body: object;
+}
+
+const createApp = (context: ContextInterface) => {
   const router = createRouter()
 
-  Vue.prototype.$server = data
+  Vue.prototype.$server = context.body
 
   const app = new Vue({
     router,
@@ -19,7 +24,7 @@ const createApp = (data: any) => {
   return { app, router }
 }
 
-export default (context: any) => {
+export default (context: ContextInterface) => {
   return new Promise((resolve, reject) => {
     const { app, router } = createApp(context)
 
