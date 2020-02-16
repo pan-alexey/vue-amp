@@ -2,23 +2,23 @@
   <nav class="navbar">
     <div class="container navbar-block">
       <div class="navbar-item">
-        <div class="icon"><svg-icon :name="'home_24'" /></div>
+        <div class="icon"><svg-icon :name="'home'" /></div>
         <div class="title">Главная</div>
       </div>
       <div class="navbar-item">
-        <div class="icon"><svg-icon :name="'catalog_tab'" /></div>
+        <div class="icon"><svg-icon :name="'catalog-tab'" /></div>
         <div class="title">Каталог</div>
       </div>
       <div class="navbar-item">
-        <div class="icon"><svg-icon :name="'cart_24'" /></div>
+        <div class="icon"><svg-icon :name="'cart'" /></div>
         <div class="title">Корзина</div>
       </div>
       <div class="navbar-item">
-        <div class="icon"><svg-icon :name="'favorites_tab_24'" /></div>
+        <div class="icon"><svg-icon :name="'favorites-tab'" /></div>
         <div class="title">Избранное</div>
       </div>
       <div class="navbar-item">
-        <div class="icon"><svg-icon :name="'person_24'" /></div>
+        <div class="icon"><svg-icon :name="'person'" /></div>
         <div class="title">Мой OZON</div>
       </div>
     </div>

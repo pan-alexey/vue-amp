@@ -2,7 +2,7 @@
   <div class="search-bar">
     <div class="search-container container">
       <div class="search-block">
-        <svg-icon class="search-icon" :name="'search_16'"/>
+        <svg-icon class="search-icon" :name="'search'"/>
         <div class="search">поиск</div>
       </div>
       <div class="bar-icon">
@@ -15,7 +15,7 @@
             <div class="catalog-block">
               <div class="container">
                 <div class="close" on="tap:my-lightbox.close" role="button" tabindex="0">
-                  <svg-icon :name="'cross_24'"/>
+                  <svg-icon :name="'cross'"/>
                 </div>
               </div>
               <div class="catalog-items">
