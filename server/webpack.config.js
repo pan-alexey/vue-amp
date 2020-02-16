@@ -7,11 +7,24 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 module.exports = {
     mode: 'production',
     target: 'node',
-    entry: path.join(paths.src, 'app.js'),
+    entry: path.join(paths.src, 'main.ts'),
     resolve: { 
       alias: { 
         '@': paths.src, 
       }, 
+      extensions: [
+        '.tsx',
+        '.ts',
+        '.mjs',
+        '.js',
+        '.jsx',
+        '.vue',
+        '.json',
+        '.wasm'
+      ],
+      modules: [
+        'node_modules',
+      ],
     }, 
     output: {
       libraryTarget: 'commonjs2',
@@ -19,6 +32,13 @@ module.exports = {
     },
     module: {
         rules: [
+          {
+            test: /\.ts?$/,
+            loader: "ts-loader",
+            options: {
+              appendTsSuffixTo: [/\.vue$/]
+            }
+          },
           {
             test: /\.vue$/,
             loader: 'vue-loader',
@@ -31,6 +51,7 @@ module.exports = {
             loader: 'babel-loader',
             exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file),
           },
+
           {
             test: /\.scss$/,
             use: [
@@ -52,8 +73,23 @@ module.exports = {
           },
           {
             enforce: 'pre',
-            test: /\.(js|vue)$/,
+            test: /\.(vue|(j|t)sx?)$/,
             loader: 'eslint-loader',
+            options: {
+              extensions: [
+                '.js',
+                '.jsx',
+                '.vue',
+                '.ts',
+                '.tsx'
+              ],
+              cache: true,
+              cacheIdentifier: '17a09e65',
+              emitWarning: false,
+              emitError: false,
+              eslintPath: '/Users/alexey/Documents/vue/node_modules/eslint',
+              formatter: undefined
+            },
             exclude: /node_modules/
           }
         ]

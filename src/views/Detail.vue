@@ -104,14 +104,14 @@
         </div>
         <ul class="saller-items">
             <li>
-              <svg-icon class="icon" :name="'card_checked_24'"/>
+              <svg-icon class="icon" :name="'card-checked'"/>
               <div>
                 <span class="block">Безопасная оплата:</span>
                 <span class="block">Банковской картой и ещe несколько способов оплаты</span>
               </div>
             </li>
             <li>
-              <svg-icon class="icon" :name="'return_24'"/>
+              <svg-icon class="icon" :name="'return'"/>
               <div class="saller-return">
                 <span class="block">Возврат 14 дней, с <a href="">Ozon Premium</a>  — 60 дней.</span>
               </div>
