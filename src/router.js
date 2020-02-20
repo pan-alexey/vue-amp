@@ -7,7 +7,7 @@ export function createRouter () {
   return new Router({
     mode: 'history',
     routes: [
-      { path: '*', component: () => import('@/views/Detail.vue') }
+      { path: '*', component: () => import('@/views/Home.vue') }
     ]
   })
 }

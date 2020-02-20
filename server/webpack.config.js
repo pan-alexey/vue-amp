@@ -71,27 +71,27 @@ module.exports = {
               }
             }]
           },
-          {
-            enforce: 'pre',
-            test: /\.(vue|(j|t)sx?)$/,
-            loader: 'eslint-loader',
-            options: {
-              extensions: [
-                '.js',
-                '.jsx',
-                '.vue',
-                '.ts',
-                '.tsx'
-              ],
-              cache: true,
-              cacheIdentifier: '17a09e65',
-              emitWarning: false,
-              emitError: false,
-              eslintPath: '/Users/alexey/Documents/vue/node_modules/eslint',
-              formatter: undefined
-            },
-            exclude: /node_modules/
-          }
+          // {
+          //   enforce: 'pre',
+          //   test: /\.(vue|(j|t)sx?)$/,
+          //   loader: 'eslint-loader',
+          //   options: {
+          //     extensions: [
+          //       '.js',
+          //       '.jsx',
+          //       '.vue',
+          //       '.ts',
+          //       '.tsx'
+          //     ],
+          //     cache: true,
+          //     cacheIdentifier: '17a09e65',
+          //     emitWarning: false,
+          //     emitError: false,
+          //     eslintPath: '/Users/alexey/Documents/vue/node_modules/eslint',
+          //     formatter: undefined
+          //   },
+          //   exclude: /node_modules/
+          // }
         ]
     },
     plugins: [

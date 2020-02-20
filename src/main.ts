@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { createRouter } from './router'
+
 
 Vue.component(
   'svg-icon', () => import('@/global/svg-icon.vue')
@@ -12,32 +12,35 @@ interface ContextInterface {
 }
 
 const createApp = (context: ContextInterface) => {
-  const router = createRouter()
 
-  Vue.prototype.$server = context.body
+  const contextBody = context.body
+
+  const foo = [
+    { name: 'A' },
+    { name: 'A' },
+    { name: 'B' },
+    { name: 'B',
+      child:[
+        { name: 'C' },
+        { name: 'C' },
+        { name: 'D' },
+        { name: 'D' }
+      ] },
+    { name: 'C' },
+    { name: 'C' }
+  ]
 
   const app = new Vue({
-    router,
+    provide: {
+      foo,
+      contextBody
+    },
     render: h => h(App)
   })
 
-  return { app, router }
+  return app
 }
 
 export default (context: ContextInterface) => {
-  return new Promise((resolve, reject) => {
-    const { app, router } = createApp(context)
-
-    router.push(context.url)
-
-    router.onReady(() => {
-      const matchedComponents = router.getMatchedComponents()
-
-      if (!matchedComponents.length) {
-        return reject(new Error())
-      }
-
-      resolve(app)
-    }, reject)
-  })
+  return createApp(context)
 }
