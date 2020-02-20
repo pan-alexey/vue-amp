@@ -24,7 +24,11 @@ const createApp = (context: ContextInterface) => {
         { name: 'C' },
         { name: 'C' },
         { name: 'D' },
-        { name: 'D' }
+        { name: 'B', child: [
+          { name: 'A' },
+          { name: 'A' },
+          { name: 'B' }
+        ] }
       ] },
     { name: 'C' },
     { name: 'C' }
