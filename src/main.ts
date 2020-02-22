@@ -2,10 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import { createRouter } from './router'
 
-Vue.component(
-  'svg-icon', () => import('@/global/SvgIcon.vue')
-)
-
 interface ContextInterface {
   url: string;
   body: object;
@@ -14,9 +10,10 @@ interface ContextInterface {
 const createApp = (context: ContextInterface) => {
   const router = createRouter()
 
-  Vue.prototype.$server = context.body
-
   const app = new Vue({
+    provide: {
+      context: context.body
+    },
     router,
     render: h => h(App)
   })
